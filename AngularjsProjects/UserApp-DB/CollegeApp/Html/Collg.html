@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<body>
+    <script src="../Js/angular.min.js"></script>
+    <script src="../Js/Collg.js"></script>
+    <div ng-app="CollgApp">
+        <div ng-controller="CollgCtro">
+            <div  style="padding:100px 0px 0px 540px;">
+                <form class="card" style="width: 40rem;background-color:darkgray;padding: 3px;border-radius: 3px;" ng-show="Registered">
+                    <div class="form-group">
+                        <label>Name </label>
+                        <input type="text" class="form-control" placeholder="Enter Name" ng-model="student.StudentName" />
+                    </div>
+                    <div class="form-group" >
+                        <label>PhoneNo </label>
+                        <input type="text" class="form-control" placeholder="MobileNo" ng-model="student.PhoneNo" />
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth </label>
+                        <input type="date" class="form-control" placeholder="PicK Date" ng-model="student.Dob" />
+                    </div>
+                    <div class="form-group">
+                        <label>Gender :</label>
+                        <span class="form-control">
+                            <input type="radio" ng-model="student.Gender" value="M" /> Male
+                            <input type="radio" ng-model="student.Gender" value="F" /> Female
+                        </span>
+                        
+                    </div>
+                    <div class="form-group">
+                        <input type="button" value="Register" ng-click="addStudent()" />
+                        <input type="button" value="Vu-Registered" ng-click="getStudents()" />
+                        <input type="button" value="Login" ng-click="login()" />
+                    </div>
+                </form>
+            </div>
+            <div ng-show="LoginPage" style="padding:100px 0px 0px 540px;">
+                <form class="card" style="width: 40rem;background-color:darkgray;padding: 3px;border-radius: 3px;">
+                    <div class="form-group">
+                        <label>Name </label>
+                        <input type="text" class="form-control" placeholder="Enter Name" id="loginName" ng-model="loginName" />
+                    </div>
+                    <div class="form-group" >
+                        <label>PhoneNo </label>
+                        <input type="text" class="form-control" placeholder="MobileNo" id="loginPhoneNo"  ng-model="loginPhoneNo"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="button" value="Login" ng-click="verifyUser()" />
+                    </div>
+                </form>
+            </div>
+            <div ng-show="VotePage">
+                <form class="card">
+                    <div  class="form-group">
+                        <select id="sel" ng-model="choosed"   ng-change="myFunc()" class="form-control" style="text-align: center;">
+                            <option value="" >--Select Hobby--</option>
+                            <option ng-repeat="op in operations" value="{{op.name}}">{{op.name}}</option>
+                        </select>
+                        <span id="opSelected" hidden>{{choosed}}</span><br><br>
+                    </div>
+                </form>
+            </div>
+            <table class="table table-striped table-dark" ng-show="vulist">
+                <thead >
+                    <tr>
+                        <th  ng-click="predicate = 'studentName'; reverse=!reverse">StudentName</th>
+                        <th  ng-click="predicate = 'dob'; reverse=!reverse">Dob</th>
+                        <th  ng-click="predicate = 'phoneNo'; reverse=!reverse">PhoneNo</th>
+                        <th  ng-click="predicate = 'gender'; reverse=!reverse">Gender</th>
+                        <th  >Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="s in stList |orderBy:predicate:reverse">
+                        <td>{{s.studentName}}</td>
+                        <td>{{s.dob}}</td>
+                        <td>{{s.phoneNo}}</td>
+                        <td>{{s.gender}}</td>
+                        <td>
+                            <a href="#" ng-click="edit(s.studentId)" role = "button" class = "btn btn-info">edit</a> &nbsp;
+                            <a href="#" ng-click="delete(s.studentId)" role = "button" class = "btn btn-danger">delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

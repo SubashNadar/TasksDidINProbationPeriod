@@ -1,0 +1,8 @@
+﻿@model JqueryAjaxWebApp.Models.Country;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Country</h1>
+<select asp-for="cid" asp-items="@(new SelectList(@ViewBag.message,"cid","cname"))"></select>
+

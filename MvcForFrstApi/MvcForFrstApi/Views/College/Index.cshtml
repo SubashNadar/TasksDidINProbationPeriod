@@ -1,0 +1,246 @@
+﻿@model IEnumerable<MvcForFrstApi.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<h1>AllStudents</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<hr/>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <span>Name:</span>
+        <input type="text" name="name" id="StudentName"/>
+        <input type="submit" value="Search" id="search"/>
+    }
+<hr/>
+<table class="table" id="schoolTable">
+    <thead>
+        <tr>
+            <th hidden>
+                StudentId
+            </th>
+            <th>
+                StudentName
+            </th>
+            <th>
+                Dob
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                PhoneNo
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.type)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@*@foreach (var item in Model.Students) {
+        <tr>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}*@
+    </tbody>
+</table>
+<br />
+        @*<table cellpadding="1" cellspacing="1">
+            <tr>
+                @if (Model!=null && Model.PageCount > 1)
+                {
+                    @for (int i = 1; i <= Model.PageCount; i++)
+                    {
+                        <td>
+                            @if (i != Model.PageIndex)
+                            {
+                                <button  onclick="PagerClick(@i)" id="pageindex" >@i</button>
+                            }
+                            else
+                            {
+                                <span id="pageindex">@i</span>
+                            }
+                        </td>
+                    }
+                 }
+                </tr>
+            </table>*@
+<input   id="CurrentPageIndex" name="PageIndex"/><br />
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id=main>
+        <span >Name : </span><h4 id="Name"></h4>
+        
+        <span>Dob : </span><h4 id="Dob"></h4>
+        
+        <span>MobileNo : </span><h4 id="MobileNo"></h4>
+        
+        <span>Gender : </span><h4 id="Gender"></h4>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script>
+        function PagerClick(index) {
+                document.getElementById("CurrentPageIndex").value = index;
+                document.forms[0].submit();
+            }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="~/js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function (){
+        var searchBoxValue;
+         $.ajax({
+                type:"GET",
+                url:'@Url.Action("SearchStudents")',
+                dataType:'json',
+                data:{name:searchBoxValue},
+                success:function(response){
+                $("#schoolTable tbody").empty();
+                  $.each(response,function(i,item){
+                      debugger;
+                     $("#schoolTable tbody").append('<tr data-name="'+item.studentName+'" data-id="'+item.studentId+'"><td hidden >'+ item.studentId +  '</td><td id="editableColumns" class="studentName">'+ item.studentName +  '</td><td  class="dob">'+ item.dob +  '</td><td  class="gender">'+ item.gender +  '</td><td id="editableColumns" class="mob">'+ item.phoneNo +  '</td><td id="schoolTd"><button   id="edit"  >Edit</button><button id="details" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</button><button id="delete" >Delete</button></td></tr>');
+                   });
+                  //alert("Success");
+                  },
+                    error:function(ex){
+                    alert("Failed");
+                    }
+                });
+        
+
+            $("#StudentName").on("change", function() {
+            debugger;
+            searchBoxValue = $(this).val();
+                $.ajax({
+                type:"GET",
+                url:'@Url.Action("SearchStudents")',
+                dataType:'json',
+                data:{name:searchBoxValue},
+                success:function(response){
+                $("#schoolTable tbody").empty();
+                  $.each(response,function(i,item){
+                      debugger;
+                     $("#schoolTable tbody").append('<tr data-name="'+item.studentName+'" data-id="'+item.studentId+'"><td hidden >'+ item.studentId +  '</td><td id="editableColumns" class="studentName">'+ item.studentName +  '</td><td  class="dob">'+ item.dob +  '</td><td  class="gender">'+ item.gender +  '</td><td id="editableColumns" class="mob">'+ item.phoneNo +  '</td><td id="schoolTd"><button   id="edit"  >Edit</button><button id="details" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</button><button id="delete" >Delete</button></td></tr>');
+                   });
+                  //alert("Success");
+                  },
+                    error:function(ex){
+                    alert("Failed");
+                    }
+                });
+            });
+
+            $("#schoolTable").on("click","#edit", function(event) {
+            
+            //var val =$(event.currentTarget).parent().data("id");
+            var td =$(event.currentTarget).parent();
+            //console.log(val);
+            //alert("Edit clicked "+td);
+                $(this).parents('tr').find('td#editableColumns').each(function() {
+                    var html = $(this).html();
+                    var input = $('<input class="editableColumnsStyle" type="text" />');
+                    input.val(html);
+                    $(this).html(input);
+                });
+                $(td).append("<input type='button' id='submitEditData' value='Submit'/>")
+            //location.reload();
+            });
+            $("#schoolTable").on("click","#submitEditData", function(event) {
+                var val =$(this).parent().parent().data("name");
+                //alert(val);
+                var studentName = $(this).parent().siblings('td.studentName').find("input").val();
+                //var gender = $(this).parent().siblings('td.gender').find("input").val();
+                //var Dob = $(this).parent().siblings('td.dob').find("input").val();
+                var PhoneNo = $(this).parent().siblings('td.mob').find("input").val();
+                alert("Name : "+studentName+"\nPhoneNo : "+PhoneNo);
+                //var student={studentName,PhoneNo,Dob,gender};
+                //console.log(student);
+                $.ajax({
+                url:'@Url.Action("Edit")',
+                dataType:'json',
+                data:{name:val,updatedname:studentName,mobileno:PhoneNo},
+                success:function(response){
+                  alert("Success");
+                  //location.reload();
+                },
+                error:function(ex){
+                  alert("Record Update Sucess");
+                  location.reload();
+              }
+                
+                
+            });
+            });
+        $("#schoolTable").on("click","#details", function(event) {
+            var studentName = $(this).parent().siblings('td.studentName').text();
+            var Gender = $(this).parent().siblings('td.gender').text();
+            var DOB = $(this).parent().siblings('td.dob').text();
+            var PhoneNo = $(this).parent().siblings('td.mob').text();
+            //alert("Name : "+studentName+"\nDob : "+DOB+"\nGender : "+Gender+"\nPhoneNo : "+PhoneNo);
+            $("#Name").text(studentName);
+            $("#Dob").text(DOB);
+            $("#Gender").text(Gender);
+            $("#MobileNo").text(PhoneNo);
+            //alert("studentName"+studentName);
+        });
+        $("#schoolTable").on("click","#delete", function(event) {
+            var val =$(event.currentTarget).data("id");
+            console.log(val);
+            alert("delete clicked"+val);
+            debugger;
+            $.ajax({
+                url:'@Url.Action("Delete")',
+                dataType:'json',
+                data:{id:val},
+                success:function(response){
+                  location.reload();
+                },
+                error:function(ex){
+                  alert("Record Deleted");
+                  location.reload();
+              }
+                
+                
+            });
+        });
+    });
+</script>

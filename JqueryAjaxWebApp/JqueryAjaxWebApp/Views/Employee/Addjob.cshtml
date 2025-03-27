@@ -1,0 +1,72 @@
+﻿@model JqueryAjaxWebApp.Models.EmployeeJobDetails
+
+@{
+    ViewData["Title"] = "Addjob";
+}
+
+<h1>Addjobdetail1</h1>
+
+<h4>EmployeeJobDetails</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Addjobdetail1">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="ejdId" class="control-label"></label>
+                <input asp-for="ejdId" class="form-control" />
+                <span asp-validation-for="ejdId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="employeeId" class="control-label"></label>
+                <input asp-for="employeeId" class="form-control" />
+                <span asp-validation-for="employeeId" class="text-danger"></span>
+            </div>*@
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                <label asp-for="deptid" class="control-label"></label>
+                            </th>
+                            <th>
+                                <label asp-for="managid" class="control-label"></label>
+                            </th>
+                            <th>
+                                <label asp-for="roleid" class="control-label"></label>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                <input asp-for="deptid" class="form-control" />
+                                <span asp-validation-for="deptid" class="text-danger"></span>
+                            </th>
+                            <th>
+                                <input asp-for="managid" class="form-control" />
+                                <span asp-validation-for="managid" class="text-danger"></span>
+                            </th>
+                            <th>
+                                <input asp-for="roleid" class="form-control" />
+                                <span asp-validation-for="roleid" class="text-danger"></span>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="form-group">
+                <input id="add" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="../Scripts/angular.min.js"></script>
+<script src="Form.js" type="text/javascript"></script>
+<body>  
+    <div ng-app="RegistrationApp">
+        <div ng-controller="RegisterationController" style="margin:60px 0px 60px 0px;background-color:aqua;border:6px;border-color:beige;padding:10px 600px 10px 600px;text-align: centre;">
+        
+            <div style="background-color:white;border:6px;border-color:black;padding:35px 28px 10px 28px;">
+                <form >
+                    <label>First Name :</label>              
+                    <input type="text" id="fname"  ng-model="fname" required/> <br> <br> 
+                    <label>Last Name : </label>           
+                    <input type="text" id="lname"  ng-model="lname" required/> <br> <br>       
+                    <label>Gender :</label><br>    
+                    <input type="radio"  name="gender"  >Male<br> 
+                    <input type="radio"  name="gender" >Female<br> <br>
+                    <label>Phone :</label>     
+                    <input type="text" id="mob" size="10" ng-model="phone" > <br> <br>       
+                    <label>Email :</label>   
+                    <input type="email" id="email"  ng-model="email" > <br>      
+                    <br> <br>    
+                    <label>Password :</label>    
+                    <input type="Password" id="pass"  ng-model="pass" > <br>     
+                    <br> <br>    
+                    <input type="reset" class="btn btn-primary" value="Submit" ng-click="register()" ng-model="Data"> 
+                </form> <br><br>
+                    <div ng-show = "Registered" class="alert alert-success" style="text-align: centre;">
+                     Hii <strong>{{fname }} {{lname}}</strong> Your registration is successfully Done!!
+                    </div>
+            </div>
+        </div>
+    </div>  
+    
+</body>  
+</html>

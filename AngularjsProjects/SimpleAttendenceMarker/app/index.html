@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+</head>
+<script src="../js/angular.min.js"></script>
+<script src="../app/app.js"></script>
+<script src="../css/style.css"></script>
+<body>
+    
+    <div  ng-app="AttendApp" >
+        <div ng-controller="AttendController " class="card-body text-center" >
+            <form role = "form"  >
+                <div class = "form-group" >
+                    <input type = "text" id = "name"  placeholder = "Enter  Name " ng-model = "name" required style="text-align: center;">
+                </div>
+                <br>
+                <input type="button" class="btn btn-primary" ng-click="MarkAttendence()" class="btn btn-primary" value = "Mark-Attendence">
+                <br><br>
+                <span ng-show = "Registered" class="alert alert-success" style="text-align: centre;" id="hidetag">
+                    Hii <strong >{{uname}}</strong> Your Attendence is Marked!!</span>
+            </form><br>
+
+                <div ><h4><b>Present Employees List</b></h4>
+                <table ng-if="ActiveUsers.length" class = "table table-striped table-bordered table-hover" >
+                    <tbody>
+                        <tr ng-repeat = "u in ActiveUsers">
+                            <td>{{ u }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div ng-hide="ActiveUsers.length  >0">All Employees Absent</div>
+        </div>
+    </div>
+</body>
+</html>

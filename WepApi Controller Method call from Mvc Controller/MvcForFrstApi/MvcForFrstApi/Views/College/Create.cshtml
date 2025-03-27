@@ -1,0 +1,72 @@
+﻿@model MvcForFrstApi.Models.Student
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StudentName" class="control-label"></label>
+                <input id="name" asp-for="StudentName" class="form-control" />
+                <span asp-validation-for="StudentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dob" class="control-label"></label>
+                <input id="dob" asp-for="Dob" class="form-control" type="datetime-local"  id="Dob" />
+                <span asp-validation-for="Dob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNo" class="control-label"></label>
+                <input id="mob" asp-for="PhoneNo" class="form-control" />
+                <span asp-validation-for="PhoneNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input id="gender" asp-for="Gender" type="radio" value="F" />Female
+                <input id="gender" asp-for="Gender" type="radio" value="M" />Male
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button id="save" value="Create" class="btn btn-primary" >Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<script src="~/js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function (){
+        var StudentName=$("#name").val();
+        var Gender=$("#gender").val();
+        var PhoneNo=$("#mob").val();
+        var Dob=$("#dob").val();
+        var student={StudentName,PhoneNo,Dob,Gender}
+        $("#save").on("click", function(event) {
+            $.ajax({
+                type:"POST",
+                url:'@Url.Action("Create")',
+                dataType:'json',
+                data:{student},
+                success:function(response){
+                  alert("Success");
+              },
+              error:function(ex){
+                  alert("Record Added SuccessFully");
+              }
+            });
+        });
+     });
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

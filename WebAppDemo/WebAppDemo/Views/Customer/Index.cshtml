@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WebAppDemo.Models.Customer>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add Customer+</a>
+</p>
+<h1>- Registered User Details -</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.userName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phoneNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rePassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gender)
+            </th>
+            <th>
+                
+                @Html.DisplayNameFor(model => model.dp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a>
+                    @Html.ActionLink( item.userName,"UserDetail","Customer")
+                </a>    
+            </td>
+            <td>
+                
+                   @Html.DisplayFor(modelItem => item.phoneNo)
+               
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.email)   
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.password)
+                
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.rePassword)
+               
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.gender)
+                
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.dp)
+                
+            </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.userName  },new {@class="btn btn-primary"}) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.userName  },new {@class="btn btn-primary"})
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>

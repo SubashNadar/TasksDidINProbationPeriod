@@ -1,0 +1,279 @@
+﻿@model JqueryAjaxWebApp.Models.EmployeeJobDetails
+
+<h3>EmployeeJobDetails</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Addjobdetail" id="addForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                WelCome Back !<b>
+                    @ViewBag.data
+                </b>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="empname" class="control-label"></label>
+                <input asp-for="empname"  class="form-control" />
+                <span asp-validation-for="empname" class="text-danger"></span>
+            </div>*@
+            <div class="container" >
+                <table class="table table-bordered" id="EmpOtherDetails" >
+	                <thead style="background-color:#4d4dff">
+		                <tr>
+			                <th style="text-align:center"  margin="1px 8px 1px 8px">
+				                <label asp-for="deptid" class="control-label"></label>
+			                </th>
+			                <th style="text-align:center"  margin="1px 8px 1px 8px">
+                                <label asp-for="managid" class="control-label"></label>
+			                </th>
+			                <th style="text-align:center"  margin="1px 8px 1px 8px">
+                                <label asp-for="roleid" class="control-label"></label>
+			                </th>
+		                </tr>
+	                </thead>
+	                <tbody>
+		                <tr>
+			                <td style="text-align:center">
+				                <select asp-for="deptid" asp-items="@(new SelectList(@ViewBag.message3,"deptId","deptName"))" id="deptName1"></select>
+                                <span asp-validation-for="deptid" class="text-danger"></span>
+            
+			                </td>
+			                <td style="text-align:center">
+				                <select asp-for="managid" asp-items="@(new SelectList(@ViewBag.message1,"mid","mname"))" id="managerName1"></select>
+                                <span asp-validation-for="managid" class="text-danger"></span>
+                            </td>
+			                <td style="text-align:center">
+				                <select asp-for="roleid" asp-items="@(new SelectList(@ViewBag.message2,"rid","rname"))" id="roleName1" ></select>
+                                <span asp-validation-for="roleid" class="text-danger"></span>
+                            </td>
+		                </tr>
+                        <tr>
+			                <td style="text-align:center">
+				                <select asp-for="deptid" asp-items="@(new SelectList(@ViewBag.message3,"deptId","deptName"))" id="deptName2"></select>
+                                @*@Html.DropDownList("deptName2",new SelectList(string.Empty,"Value","Text"),"")*@
+                                <span asp-validation-for="deptid" class="text-danger"></span>
+            
+			                </td>
+			                <td style="text-align:center">
+				                <select asp-for="managid" asp-items="@(new SelectList(@ViewBag.message1,"mid","mname"))" id="managerName2"></select>
+@*                                @Html.DropDownList("managerName2",new SelectList(string.Empty,"Value","Text"),"")
+*@                                <span asp-validation-for="managid" class="text-danger"></span>
+                            </td>
+			                <td style="text-align:center">
+				                <select asp-for="roleid" asp-items="@(new SelectList(@ViewBag.message2,"rid","rname"))" id="roleName2" ></select>
+@*                                @Html.DropDownList("roleName2",new SelectList(string.Empty,"Value","Text"),"")*@                                <span asp-validation-for="roleid" class="text-danger"></span>
+                            </td>
+		                </tr>
+                        <tr>
+			                <td style="text-align:center">
+				                <select asp-for="deptid" asp-items="@(new SelectList(@ViewBag.message3,"deptId","deptName"))" id="deptName3"></select>
+@*                                @Html.DropDownList("deptName3",new SelectList(string.Empty,"Value","Text"),"")*@                                <span asp-validation-for="deptid" class="text-danger"></span>
+            
+			                </td>
+			                <td style="text-align:center">
+				                <select asp-for="managid" asp-items="@(new SelectList(@ViewBag.message1,"mid","mname"))" id="managerName3"></select>
+                                <span asp-validation-for="managid" class="text-danger"></span>
+                            </td>
+			                <td style="text-align:center">
+				                <select asp-for="roleid" asp-items="@(new SelectList(@ViewBag.message2,"rid","rname"))" id="roleName3" ></select>
+                                <span asp-validation-for="roleid" class="text-danger"></span>
+                            </td>
+		                </tr>
+                    </tbody>
+                </table>
+                </div>
+            <div class="form-group">
+                <input type="button"   id="btn_add" value="Add" class="btn btn-primary"  style="background-color:#4d4dff!important" />
+            </div>
+            <div>
+                <b>
+                    @ViewData["JobAdded"]
+                </b>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetEmpDetails">View Employess</a>
+</div>
+<script src="~/js/jquery.min.js"></script>
+<script type="text/javascript">
+     //$("#btn_add").on('click', function(){
+         //alert("the values are :-");
+         $(document).ready(function (){
+             var valu1,valu2,valu3;
+             var valu4,valu5,valu6;
+             var valu7,valu8,valu9;
+         $('#deptName1').on("change", function() {
+            valu1 = $(this).val();
+            //text1 = $(this).find('option:selected').text();
+            alert( "value- "+valu1);
+         });
+         $('#roleName1').on("change", function() {
+            valu2 = $(this).val();
+            //text2 = $(this).find('option:selected').text();
+            alert(" value- "+valu2);
+        });
+        $('#managerName1').on("change", function() {
+            valu3 = $(this).val();
+            //text3 = $(this).find('option:selected').text();
+            alert( "value- "+valu3);
+        });
+        $('#deptName2').on("change", function() {
+            valu4 =  $(this).val();
+         //text1 = $(this).find('option:selected').text();
+            alert( "deptName2 - "+valu4);
+         });
+        //$("#deptName2").on("change",function(){
+        //    valu4=$(this).val();
+        //    //text1=$(this).find('options:selected').text();
+        //    //var detail=$("#deptName2").val();
+        //    alert("value- "+valu4 +" text - "+text1)
+            
+        //    alert("hello -"+details);
+        //});
+         $('#roleName2').on("change", function() {
+            valu5 = $(this).val();
+            //text2 = $(this).find('option:selected').text();
+            alert(" roleName2 - "+valu5);
+        });
+        $('#managerName2').on("change", function() {
+            valu6 = $(this).val();
+            //text3 = $(this).find('option:selected').text();
+            alert( "managerName2 - "+valu6);
+        });
+        $('#deptName3').on("change", function() {
+            valu7 = $(this).val();
+            //text1 = $(this).find('option:selected').text();
+            alert( "deptName3 - "+valu7);
+         });
+         $('#roleName3').on("change", function() {
+            valu8 = $(this).val();
+            //text2 = $(this).find('option:selected').text();
+            alert(" roleName3 - "+valu8);
+        });
+        $('#managerName3').on("change", function() {
+            valu9 = $(this).val();
+            //text3 = $(this).find('option:selected').text();
+            alert( "managerName3 - "+valu9);
+        });
+        //$("#deptName1").change(function(){
+        //    valu1 = $(this).val();
+        //    $("#deptName2").empty();
+        //    //$("#deptname3").empty();
+        //    alert("its - "+valu1)
+        //    $.ajax({
+        //        type:"get",
+        //        url:'@Url.Action("BindDepartmentDropdownonPreviousSelction")',
+        //        datatype:'json',
+        //        data:{deptid:valu1},
+        //        success:function(response){
+        //          $.each(response,function(i,item){
+                     
+        //              $("#deptName2").append('<option value="'+item.deptid+'">'+item.deptName+'</option>');
+        //          });
+        //      },
+        //      error:function(ex){
+        //          alert("failed");
+        //      }
+        //    });
+        //});
+        //$("#managerName1").change(function(){
+        //    valu3 = $(this).val();
+        //    alert("its -"+valu3)
+        //    $("#managerName2").empty();
+        //    //$("#managerName3").empty();
+        //    $.ajax({
+        //        type:"GET",
+        //        url:'@Url.Action("BindManagerDropdownonPreviousSelction")',
+        //        dataType:'json',
+        //        data:{mid:valu3},
+        //        success:function(response){
+        //          $.each(response,function(i,item){
+                     
+        //              $("#managerName2").append('<option value="'+item.mid+'">'+item.mname+'</option>');
+        //          });
+        //      },
+        //      error:function(ex){
+        //          alert("Failed");
+        //      }
+        //    });
+        //});
+        //$("#roleName1").change(function(){
+        //    valu2 = $(this).val();
+        //    alert("its -"+valu2)
+        //    $("#roleName2").empty();
+        //    //$("#roleName3").empty();
+        //    $.ajax({
+        //        type:"GET",
+        //        url:'@Url.Action("BindRoleDropdownonPreviousSelction")',
+        //        dataType:'json',
+        //        data:{roleid:valu2},
+        //        success:function(response){
+        //          $.each(response,function(i,item){
+                     
+        //              $("#roleName2").append('<option value="'+item.rid+'">'+item.rname+'</option>');
+        //          });
+        //      },
+        //      error:function(ex){
+        //          alert("Failed");
+        //      }
+        //    });
+        //});
+        $('#btn_add').click( function() {
+            alert('button clicked');
+           var details = [
+            { deptid: valu1, managid: valu3,roleid: valu2},
+            { deptid: valu4, managid: valu6,roleid:valu5 },
+            { deptid: valu7, managid: valu9,roleid:valu8 }
+            ];
+            alert(details[0].deptid);
+            alert(details[1].managid);
+            alert(details[2].roleid);
+            //var frstRow={valu1,valu2,valu3};
+            //var secondRow={valu4,valu5,valu6}; 
+            //var thirdRow={valu7,valu8,valu9}; 
+            //alert("frstRow-"+valu1+""+valu2+""+valu3+" secondRow-"+valu4+""+valu5+""+valu6+" thirdRow-"+valu7+""+valu8+""+valu9)
+            alert('Ur selected values :- ');
+             $.ajax({
+              type:"POST",
+              url:'@Url.Action("Addjobdetail")',
+              dataType:'json',
+             data:{eJobdetails:details},
+              //data:{deptid:valu1,roleid:valu2,managid:valu3},//{deptid:valu4,roleid:valu5,managid:valu6},{deptid:valu7,roleid:valu8,managid:valu9},
+             
+              success:function(result){
+                  alert("Added Successfully");
+              },
+              error:function(ex){
+                  alert("Hii! "+ex );
+                  
+              }
+           });
+            
+        });
+        });
+        //$("#btn_add").on('click', function(){
+        // alert("Department - "+value1+" Role -"+value2+" Manager -"+value3);
+        //});
+     //});
+     //$(document).ready(function(){
+     //   $("#btn_add").on('click', function(){
+     //       alert("Method");
+     //       debugger;
+            //try 1-$("select.deptName1").change (function () { 
+            //    alert("Hello frm start of method")
+            //    var selectedDepartment = $(this).children("option:selected").val();  
+            //    alert ("You have selected  - " + selectedDepartment);  
+            //});  
+            //try 2-$("#EmpOtherDetails tr").each(function() {   
+            //    var value = $(this).find("td:eq(0)").text(); // return the whole select option as string
+            //    alert(value);
+            //});
+        //});
+    //});
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

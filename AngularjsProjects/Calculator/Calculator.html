@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Calculator</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="../Scripts/angular.min.js"></script>
+<script src="Calculator.js" type="text/javascript"></script>
+
+<body ng-app="calculation">
+        <div ng-controller="calc" style="margin:60px 0px 60px 0px;background-color:aqua;border:6px;border-color:beige;padding:10px 600px 10px 600px;text-align: centre;">
+            <div style="background-color:white;border:6px;border-color:black;padding:35px 28px 35px 28px;">
+                <strong >
+                    Enter Two Values and Select Operation you need to perfom on them.
+                </strong><br><br>
+                <input type="number" ng-model="value1" class="no-spinner" value="{{value1}}">
+                <br ><br >
+                <input type="number" ng-model="value2" class="no-spinner" value="{{value2}}">
+                <br><br>
+                <select id="sel" ng-model="choosed"   ng-change="myFunc()">
+                    <option value="">--Select Operations--</option>
+                    <option ng-repeat="op in operations" value="{{op.value}}">{{op.operation}}</option>
+                </select>
+                <span id="opSelected" hidden>{{choosed}}</span><br><br>
+                <span ng-show="mul" class="alert alert-success">
+                    Multiplication of the input's given is <strong>{{multiplied}}</strong>
+                </span>
+                <span ng-show="add" class="alert alert-success">
+                    Addition of the input's given is <strong>{{added}}</strong>
+                </span>
+                <span ng-show="sub" class="alert alert-success">
+                    Subtraction of the input's given is <strong>{{subtracted}}</strong>
+                </span>
+                <span ng-show="div" class="alert alert-success">
+                    Division of the input's given is <strong>{{divided}}</strong>
+                </span>
+
+            </div>
+            
+            
+        </div>
+</body>
+</html>

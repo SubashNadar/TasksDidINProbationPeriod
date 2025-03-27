@@ -1,0 +1,30 @@
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\bin\Debug\net6.0\FrstconsoleApp.exe
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\bin\Debug\net6.0\FrstconsoleApp.deps.json
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\bin\Debug\net6.0\FrstconsoleApp.runtimeconfig.json
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\bin\Debug\net6.0\FrstconsoleApp.dll
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\bin\Debug\net6.0\FrstconsoleApp.pdb
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.csproj.AssemblyReference.cache
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.AssemblyInfoInputs.cache
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.AssemblyInfo.cs
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.dll
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\refint\FrstconsoleApp.dll
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.pdb
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.genruntimeconfig.cache
+C:\Users\shnadar\source\repos\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\ref\FrstconsoleApp.dll
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\bin\Debug\net6.0\FrstconsoleApp.exe
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\bin\Debug\net6.0\FrstconsoleApp.deps.json
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\bin\Debug\net6.0\FrstconsoleApp.runtimeconfig.json
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\bin\Debug\net6.0\FrstconsoleApp.dll
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\bin\Debug\net6.0\FrstconsoleApp.pdb
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.csproj.AssemblyReference.cache
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.AssemblyInfoInputs.cache
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.AssemblyInfo.cs
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.dll
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\refint\FrstconsoleApp.dll
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.pdb
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\FrstconsoleApp.genruntimeconfig.cache
+C:\Users\shnadar\OneDrive - SkillSoft Corporation\Desktop\MyProjects\FrstconsoleApp\FrstconsoleApp\obj\Debug\net6.0\ref\FrstconsoleApp.dll

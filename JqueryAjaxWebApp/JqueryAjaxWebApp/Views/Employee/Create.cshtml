@@ -1,0 +1,238 @@
+﻿@model JqueryAjaxWebApp.Models.Employee
+
+<h1>Employee Registration Form</h1>
+<h2>Task 2 (Implementation of Ajax And jQuery)</h2>
+<h4>Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-9">
+        <form asp-action="Create" id="myForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="empname" class="control-label"></label>
+                <input asp-for="empname" class="form-control" id="empname" />
+                <span asp-validation-for="empname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dob" class="control-label"></label>
+                <input asp-for="dob" class="form-control" type="date"  id="dob" />
+                <span asp-validation-for="dob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="gender" class="control-label"></label>
+                <input asp-for="gender" type="radio" name="gender"value="F" id="gender"/>Female
+                <input asp-for="gender" type="radio" name="gender"value="M" id="gender" />Male
+                @*<input asp-for="gender" type="radio" name="gender" value="M" id="gender" />Male
+                <input asp-for="gender" type="radio" name="gender" value="F" id="gender" />Female*@
+                <span asp-validation-for="gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" id="email" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="usrpassword" class="control-label"></label>
+                <input asp-for="usrpassword" class="form-control" type="password" id="usrpassword" />
+                <span asp-validation-for="usrpassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rePassword" class="control-label"></label>
+                <input asp-for="rePassword" class="form-control" type="password" id="rePassword"/>
+                <span asp-validation-for="rePassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="phoneno" class="control-label"></label>
+                <input asp-for="phoneno" class="form-control" id="phoneno" />
+                <span asp-validation-for="phoneno" class="text-danger"></span>
+            </div><br />
+            <div class="form-group" >
+                <label asp-for="countryName" class="control-label" ></label>
+                
+                <select asp-for="countryName" asp-items="@(new SelectList(@ViewBag.message,"cid","cname"))" class="coId" id="CountryId" ></select>
+                <span asp-validation-for="countryName" class="text-danger"></span>
+            </div><br />
+            <div class="form-group">
+                <label asp-for="cStateName" class="control-label"></label>
+              @Html.DropDownList("StateId",new SelectList(string.Empty,"Value","Text"),"")
+                <span asp-validation-for="cStateName" class="text-danger"></span>
+            </div><br />
+            @*<div class="container" >
+                <table class="table table-bordered"  >
+	<thead style="background-color:#4d4dff">
+		<tr>
+			<th style="text-align:center"  margin="1px 8px 1px 8px">
+				<label asp-for="deptName" class="control-label"></label>
+			</th>
+			<th style="text-align:center"  margin="1px 8px 1px 8px">
+                <label asp-for="managerName" class="control-label"></label>
+			</th>
+			<th style="text-align:center"  margin="1px 8px 1px 8px">
+                <label asp-for="roleName" class="control-label"></label>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="text-align:center">
+				<select asp-for="deptName" asp-items="@(new SelectList(@ViewBag.message3,"deptId","deptName"))" id="deptName"></select>
+                <span asp-validation-for="deptName" class="text-danger"></span>
+            
+			</td>
+			<td style="text-align:center">
+				 <select asp-for="managerName" asp-items="@(new SelectList(@ViewBag.message1,"mid","mname"))" id="managerName"></select>
+                <span asp-validation-for="managerName" class="text-danger"></span>
+            </td>
+			<td style="text-align:center">
+				    <select asp-for="roleName" asp-items="@(new SelectList(@ViewBag.message2,"rid","rname"))" id="roleName" ></select>
+                <span asp-validation-for="roleName" class="text-danger"></span>
+            </td>
+		</tr>
+        <tr>
+			<td style="text-align:center">
+				<select asp-for="deptName2" asp-items="@(new SelectList(@ViewBag.message3,"deptId","deptName"))"></select>
+                <span asp-validation-for="deptName2" class="text-danger"></span>
+            
+			</td>
+			<td style="text-align:center">
+				 <select asp-for="managerName2" asp-items="@(new SelectList(@ViewBag.message1,"mid","mname"))"></select>
+                <span asp-validation-for="managerName2" class="text-danger"></span>
+            </td>
+			<td style="text-align:center">
+				    <select asp-for="roleName2" asp-items="@(new SelectList(@ViewBag.message2,"rid","rname"))" ></select>
+                <span asp-validation-for="roleName2" class="text-danger"></span>
+            </td>
+		</tr>
+        <tr>
+			<td style="text-align:center">
+				<select asp-for="deptName3" asp-items="@(new SelectList(@ViewBag.message3,"deptId","deptName"))"></select>
+                <span asp-validation-for="deptName3" class="text-danger"></span>
+            
+			</td>
+			<td style="text-align:center">
+				 <select asp-for="managerName3" asp-items="@(new SelectList(@ViewBag.message1,"mid","mname"))"></select>
+                <span asp-validation-for="managerName3" class="text-danger"></span>
+            </td>
+			<td style="text-align:center">
+				    <select asp-for="roleName3" asp-items="@(new SelectList(@ViewBag.message2,"rid","rname"))" ></select>
+                <span asp-validation-for="roleName3" class="text-danger"></span>
+            </td>
+		</tr>
+        <tr>
+			<td style="text-align:center">
+				<select asp-for="deptName4" asp-items="@(new SelectList(@ViewBag.message3,"deptId","deptName"))"></select>
+                <span asp-validation-for="deptName4" class="text-danger"></span>
+            
+			</td>
+			<td style="text-align:center">
+				 <select asp-for="managerName4" asp-items="@(new SelectList(@ViewBag.message1,"mid","mname"))"></select>
+                <span asp-validation-for="managerName4" class="text-danger"></span>
+            </td>
+			<td style="text-align:center">
+				    <select asp-for="roleName4" asp-items="@(new SelectList(@ViewBag.message2,"rid","rname"))" ></select>
+                <span asp-validation-for="roleName4" class="text-danger"></span>
+            </td>
+		</tr>
+        <tr>
+			<td style="text-align:center">
+				<select asp-for="deptName5" asp-items="@(new SelectList(@ViewBag.message3,"deptId","deptName"))"></select>
+                <span asp-validation-for="deptName5" class="text-danger"></span>
+            
+			</td>
+			<td style="text-align:center">
+				 <select asp-for="managerName5" asp-items="@(new SelectList(@ViewBag.message1,"mid","mname"))"></select>
+                <span asp-validation-for="managerName5" class="text-danger"></span>
+            </td>
+			<td style="text-align:center">
+				    <select asp-for="roleName5" asp-items="@(new SelectList(@ViewBag.message2,"rid","rname"))" ></select>
+                <span asp-validation-for="roleName5" class="text-danger"></span>
+            </td>
+		</tr>
+		
+	</tbody>
+</table>
+            </div>*@<br />
+            <div class="form-group">
+                <input value="Register" class="btn btn-primary" id="btn_save" style="background-color:#4d4dff!important"/>
+            </div>
+            <div>
+                <b>
+                    @ViewData["empName"]
+                </b>
+                <b>
+                    @ViewData["Success"]
+                </b>
+            </div>
+            
+        </form>
+    </div>
+    
+</div>
+<br />
+<div class="form-group">
+    <h4>Existing Employee --><a asp-action="Login" class="btn btn-primary" style="background-color:#4d4dff!important">Login</a></h4>
+</div>
+<script src="~/js/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+       $("#CountryId").change(function(){
+           $("#StateId").empty();
+           $.ajax({
+              type:"GET",
+              url:'@Url.Action("BindStateByCountryId")',
+              dataType:'json',
+              data:{countryId:$("#CountryId").val()},
+              success:function(response){
+                  $.each(response,function(i,item){
+                     
+                      $("#StateId").append('<option value="'+item.csid+'">'+item.sname+'</option>');
+                  });
+              },
+              error:function(ex){
+                  alert("Failed");
+              }
+           });
+       });
+       $("#btn_save").on('click', function(){
+           debugger;
+           var countryName=$("#CountryId").val();
+           var empname=$("#empname").val();
+           var gender=$('input:radio[name=gender]:checked').val();
+           var email=$("#email").val();
+            var usrpassword=$("#usrpassword").val();
+           var rePassword=$("#rePassword").val();
+           var phoneno=$("#phoneno").val();
+           // var deptName=$("#deptName").val();
+           //var managerName=$("#managerName").val();
+           //var roleName=$("#roleName").val();
+           var dob=$("#dob").val();
+           var cStateName=$("#StateId").val();
+           var employeeDetails={empname,gender,dob,phoneno,email,usrpassword,rePassword,countryName,cStateName};//,deptName,managerName,roleName}
+            $.ajax({
+              type:"POST",
+              url:'@Url.Action("Create")',
+              dataType:'json',
+              data:{emp:employeeDetails},
+             
+              success:function(){
+                  alert("Saved Successfully");
+              },
+              error:function(ex){
+                  alert("Hii! "+empname );
+                  
+              }
+           });
+       });
+    });
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @*<script>
+        function getCountryCode(){
+           var cid=country.countryId[country.countryId.selectedIndex]
+        }
+    </script>*@
+}
